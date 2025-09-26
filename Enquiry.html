@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enquiry - Visionary Prints</title>
+  <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="logo"><span class="dot"></span> Visionary Prints</div>
+      <nav>
+        <div class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="menu">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="links" id="menu">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="products.html">Products</a>
+          <a href="checkout.html">Checkout</a>
+          <a href="enquiry.html" class="active">Enquiry</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="section-title">Enquiry Form</h1>
+    <form>
+      <label>Name:<br><input type="text" required></label><br><br>
+      <label>Email:<br><input type="email" required></label><br><br>
+      <label>Product/Service:<br>
+        <select>
+          <option>T-Shirts</option>
+          <option>Posters</option>
+          <option>Tote Bags</option>
+          <option>Other</option>
+        </select>
+      </label><br><br>
+      <label>Message:<br><textarea rows="5" required></textarea></label><br><br>
+      <button type="submit" class="cta">Send Enquiry</button>
+    </form>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Visionary Prints • Call us: +27 123 456 7890 • Email us: VisionaryPrints@gmail.com</div>
+  </footer>
+  <button id="toTop" aria-label="Back to top">↑</button>
+  <script src="js/script.js"></script>
+</body>
+</html>

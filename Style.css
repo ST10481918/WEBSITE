@@ -1,0 +1,382 @@
+/* ---------- 1. CSS RESET (lightweight) ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  font-size: 100%;
+}
+ol, ul { list-style: none; }
+img { max-width: 100%; height: auto; display: block; }
+button { font: inherit; }
+
+/* Improve text legibility on small screens */
+html { -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+
+/* ---------- 2. CSS VARIABLES + BASE STYLE ---------- */
+:root{
+  --brand: #5a2d82;
+  --brand-2: #8b5cc7;
+  --text: #171717;
+  --muted: #666666;
+  --bg: #faf8ff;
+  --card: #ffffff;
+  --rounded: 14px;
+  --container-max: 1100px;
+  --gap: 1rem;
+
+  /* Typography scale */
+  --fs-base: 16px;
+  --line-height: 1.6;
+  --h1: clamp(2rem, 5vw, 3.2rem);
+  --h2: clamp(1.4rem, 3.5vw, 2rem);
+  --h3: 1.05rem;
+}
+
+/* Base layout */
+html { font-size: var(--fs-base); }
+body {
+  font-family: system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: var(--line-height);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Container */
+.container{
+  width: min(var(--container-max), 92%);
+  margin-inline: auto;
+  padding-inline: 0.25rem;
+}
+
+/* Utility */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* ---------- 3. TYPOGRAPHY ---------- */
+h1 { font-size: var(--h1); line-height: 1.05; margin-bottom: .6rem; }
+h2 { font-size: var(--h2); margin-bottom: .5rem; color: var(--brand); }
+h3 { font-size: var(--h3); margin-bottom: .4rem; }
+p { margin-bottom: .75rem; color: var(--text); }
+
+.muted { color: var(--muted); }
+
+/* ---------- 4. NAV / HEADER ---------- */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: rgba(160, 0, 253, 0.95);
+  backdrop-filter: blur(6px) saturate(150%);
+  border-bottom: 1px solid #eee;
+}
+
+/* header layout */
+.nav {
+  display: flex;
+  gap: var(--gap);
+  align-items: center;
+  justify-content: space-between;
+  padding: .9rem 0;
+}
+
+/* logo */
+.logo {
+  display: flex;
+  gap: .6rem;
+  align-items: center;
+  font-weight: 800;
+  letter-spacing: .4px;
+  color: var(--brand);
+}
+.logo .dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: linear-gradient(180deg, var(--brand), var(--brand-2));
+}
+
+/* nav links */
+nav .links {
+  display: flex;
+  gap: .35rem;
+  align-items: center;
+}
+.links a {
+  padding: .45rem .9rem;
+  border-radius: 999px;
+  color: inherit;
+  text-decoration: none;
+  font-weight: 600;
+}
+.links a:hover,
+.links a:focus {
+  background: rgba(90,45,130,.08);
+  outline: none;
+  transform: translateY(-1px);
+}
+.links a.active {
+  background: var(--brand);
+  color: #fff;
+}
+
+/* hamburger (mobile) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+.hamburger span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform .18s ease;
+}
+
+/* ---------- 5. HERO ---------- */
+.hero {
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 55%, #bda6e8 100%);
+  color: #fff;
+  overflow: hidden;
+  position: center;
+  padding: 4rem 0;
+}
+.hero.fullscreen { min-height: 72vh; display: grid; align-items: center; }
+.hero .container {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 1.25rem;
+  align-items: center;
+}
+.hero p { opacity: .95; }
+
+/* hero card */
+.hero-card {
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: var(--rounded);
+  padding: 1rem;
+}
+
+/* CTA */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  background: #fff;
+  color: var(--brand);
+  border: 0;
+  border-radius: 999px;
+  padding: .85rem 1.2rem;
+  font-weight: 700;
+  box-shadow: 0 6px 16px rgba(0,0,0,.12);
+  cursor: pointer;
+  text-decoration: none;
+}
+.cta:hover, .cta:focus { transform: translateY(-2px); outline: none; }
+
+/* ---------- 6. GRID / CARDS ---------- */
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+.card {
+  background: var(--card);
+  border: 1px solid #eee;
+  border-radius: 18px;
+  padding: 1rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,.03);
+}
+.card img { border-radius: 10px; margin-bottom: .6rem; }
+
+/* Product Grid Layout */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Individual Product Card */
+.product-card {
+  background: #fff;
+  border: 1px solid #7a00fc92;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.product-card h2 {
+  font-size: 1.2rem;
+  color: var(--brand);
+  margin: 0.5rem 0;
+}
+
+.product-card .price {
+  font-weight: bold;
+  color: #333;
+  margin: 0.5rem 0;
+}
+
+.product-card p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.product-card button {
+  margin-top: 0.8rem;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 999px;
+  background: var(--brand);
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.product-card button:hover {
+  background: var(--brand-2);
+  transform: translateY(-2px);
+}
+
+
+/* Quote */
+.quote {
+  font-style: italic;
+  border-left: 4px solid var(--brand);
+  padding-left: 12px;
+  margin: 0;
+}
+
+/* ---------- 7. FORMS ---------- */
+form {
+  background: var(--card);
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  max-width: 780px;
+}
+.form-row { display: grid; gap:.6rem; margin-bottom:.85rem; }
+.form-row.two {
+  grid-template-columns: 1fr 1fr;
+}
+label { font-weight: 600; display:block; color:var(--text); }
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+  margin-top: .35rem;
+  padding: .6rem .75rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  width: 100%;
+  font-size: .95rem;
+  resize: vertical;
+}
+input:focus, textarea:focus, select:focus {
+  outline: 3px solid rgba(90,45,130,.12);
+  border-color: var(--brand);
+}
+
+/* Submit btn */
+.btn {
+  display: inline-flex;
+  align-items:center;
+  gap:.6rem;
+  padding: .7rem 1rem;
+  border-radius: 999px;
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+}
+.btn:focus { outline: 3px solid rgba(139,92,199,.12); }
+
+/* ---------- 8. FOOTER ---------- */
+footer {
+  padding: 28px 0;
+  border-top: 1px solid #eee;
+  color: #777;
+  background: #fff;
+  margin-top: 1.5rem;
+}
+
+/* ---------- 9. Back-to-top ---------- */
+#toTop {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  display: none;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 50%;
+  width: 46px; height: 46px;
+  place-items: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* ---------- 10. Responsive ---------- */
+@media (max-width: 900px){
+  .hero .container { grid-template-columns: 1fr; }
+  .grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px){
+  .grid { grid-template-columns: 1fr; }
+  .hamburger { display: flex; }
+  .links {
+    display: none;
+    position: absolute;
+    right: 4%;
+    top: 64px;
+    min-width: 220px;
+    background: #fff;
+    border-radius: 12px;
+    padding: .5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .4rem;
+  }
+  .links.open { display: flex; }
+}
+
+/* accessible focus for keyboard users */
+a:focus, button:focus { outline-offset: 3px; }
+
+/* small helpers */
+.center { text-align:center; }
+.mt-1 { margin-top: 1rem; }

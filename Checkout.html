@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Visionary Prints</title>
+  <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="logo"><span class="dot"></span> Visionary Prints</div>
+      <nav>
+        <div class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="menu">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="links" id="menu">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="products.html">Products</a>
+          <li><a href="checkout.html" class="active">Checkout</a></li>
+          <a href="enquiry.html">Enquiry</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+ 
+  <!-- Main -->
+  <main>
+    <section class="checkout">
+      <h1>Checkout</h1>
+      <p>Please review your order and complete your details to proceed.</p>
+
+      <!-- Order Summary -->
+      <div class="order-summary">
+        <h2>Your Order</h2>
+        <ul>
+          <li>T-Shirt (Size M) - R200</li>
+          <li>Poster - R150</li>
+        </ul>
+        <p><strong>Total: R350</strong></p>
+      </div>
+
+      <!-- Checkout Form -->
+      <form class="checkout-form">
+        <h2>Billing Details</h2>
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="address">Shipping Address:</label>
+        <textarea id="address" name="address" required></textarea>
+        <p><strong>Delivery: R60</strong></p>
+
+        <label for="payment">Payment Method:</label>
+        <p><strong>Total + Delivery: R410</strong></p>
+        <select id="payment" name="payment" required>
+          <option value="">-- Select --</option>
+          <option value="card">Credit/Debit Card</option>
+          <option value="paypal">PayPal</option>
+          <option value="cod">Cash on Delivery</option>
+        </select>
+
+        <button type="submit" class="btn">Place Order</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Visionary Prints. All rights reserved.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
